@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Display</title>
+    <link rel="stylesheet" href="sytle.css">
+</head>
+<body>
+    <!-- Driver License -->
+    <div id="license-container" class="hidden">
+        <div class="license-card driver-license">
+            <div class="license-header">
+                <h1>DRIVER LICENCE</h1>
+                <h2>VICTORIA AUSTRALIA</h2>
+            </div>
+            
+            <div class="license-body">
+                <div class="left-section">
+                    <div class="field">
+                        <span class="label">NAME:</span>
+                        <span class="value" id="citizen-name">JANE CITIZEN</span>
+                    </div>
+                    
+                    <div class="address-section">
+                        <div class="value" id="address1">FLAT 10</div>
+                        <div class="value" id="address2">77 SAMPLE PARADE</div>
+                        <div class="value" id="address3">KEW EAST VIC 3102</div>
+                    </div>
+                    
+                    <div class="bottom-fields">
+                        <div class="field-row">
+                            <div class="field">
+                                <span class="label">LICENCE EXPIRY</span>
+                                <span class="value" id="expiry-date">20-05-2019</span>
+                            </div>
+                            <div class="field">
+                                <span class="label">DATE OF BIRTH</span>
+                                <span class="value" id="birth-date">29-07-1983</span>
+                            </div>
+                        </div>
+                        
+                        <div class="field-row">
+                            <div class="field">
+                                <span class="label">LICENCE TYPE</span>
+                                <span class="value" id="license-type">CAR</span>
+                            </div>
+                            <div class="field">
+                                <span class="label">CONDITIONS</span>
+                                <span class="value" id="conditions">SBEA\XYZ</span>
+                            </div>
+                        </div>
+                        
+                        <div class="field-row">
+                            <div class="field signature-field">
+                                <span class="value signature-text" id="signature">Jane Citizen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-section">
+                    <div class="license-number">
+                        <span class="label">LICENCE NO.</span>
+                        <span class="value" id="license-no">987654321</span>
+                    </div>
+                    
+                    <div class="photo-section">
+                        <img id="citizen-photo" src="" alt="Citizen Photo">
+                        <div class="photo-overlay" id="photo-overlay">28071983</div>
+                    </div>
+                    
+                    <div class="vic-roads">
+                        <span>VIC roads</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="watermark">
+                <span>VicRoads</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Proof of Age Card -->
+    <div id="proof-age-container" class="hidden">
+        <div class="license-card proof-age-card">
+            <div class="proof-age-header">
+                <h1>PROOF OF AGE CARD</h1>
+                <h2>VICTORIA AUSTRALIA</h2>
+            </div>
+            
+            <div class="proof-age-body">
+                <div class="left-section">
+                    <div class="name-field">
+                        <span class="value large-text" id="proof-name">SAM SAMPLE</span>
+                    </div>
+                    
+                    <div class="address-section">
+                        <div class="value" id="proof-address1">10 SAMPLE STREET</div>
+                        <div class="value" id="proof-address2">MELBOURNE, VICTORIA</div>
+                    </div>
+                    
+                    <div class="bottom-info">
+                        <div class="field-group">
+                            <div class="field">
+                                <span class="label">Date of Birth</span>
+                                <span class="value" id="proof-birth-date">03-09-1989</span>
+                            </div>
+                            <div class="field">
+                                <span class="label">Date of Issue</span>
+                                <span class="value" id="proof-issue-date">05/03/2019</span>
+                            </div>
+                            <div class="field">
+                                <span class="label">Location</span>
+                                <span class="value" id="proof-location">572</span>
+                            </div>
+                        </div>
+                        
+                        <div class="victoria-logo">
+                            <div class="triangle">VICTORIA</div>
+                            <div class="state-gov">State Government</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-section">
+                    <div class="card-number">
+                        <span class="value" id="proof-card-no">123456</span>
+                    </div>
+                    
+                    <div class="photo-section">
+                        <img id="proof-photo" src="" alt="Person Photo">
+                        <div class="photo-overlay" id="proof-photo-overlay">20071993</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firearms License -->
+    <div id="firearms-container" class="hidden">
+        <div class="license-card firearms-license">
+            <div class="firearms-header">
+                <h1>Category A & B Longarm Licence</h1>
+                <h2>VICTORIA AUSTRALIA</h2>
+            </div>
+            
+            <div class="firearms-body">
+                <div class="left-section">
+                    <div class="name-field">
+                        <span class="value large-text" id="firearms-name">Buster Jones</span>
+                    </div>
+                    
+                    <div class="conditions-field">
+                        <span class="label">Special Conditions:</span>
+                        <span class="value" id="firearms-conditions">N</span>
+                    </div>
+                    
+                    <div class="reasons-field">
+                        <span class="label">REASONS:</span>
+                        <span class="value" id="firearms-reasons">Sport/Target Shooting</span>
+                    </div>
+                    
+                    <div class="signature-section">
+                        <div class="signature-box">
+                            <span class="signature-text" id="firearms-signature">Buster Jones</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bottom-info">
+                        <div class="expires-section">
+                            <span class="label">EXPIRES</span>
+                            <span class="value" id="firearms-expiry">01/01/3002</span>
+                        </div>
+                        
+                        <div class="license-number-section">
+                            <span class="label">LICENCE NUMBER</span>
+                            <span class="value large-number" id="firearms-license-no">113 569 895</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-section">
+                    <div class="photo-section">
+                        <img id="firearms-photo" src="" alt="License Holder Photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Heavy Vehicle License -->
+    <div id="heavy-vehicle-container" class="hidden">
+        <div class="license-card heavy-vehicle-license">
+            <div class="heavy-vehicle-header">
+                <h1>HEAVY VEHICLE DRIVER LICENCE</h1>
+                <h2>VICTORIA AUSTRALIA</h2>
+            </div>
+            
+            <div class="heavy-vehicle-body">
+                <div class="left-section">
+                    <div class="field">
+                        <span class="value name-text" id="heavy-vehicle-name">JAYNE C AMIET</span>
+                    </div>
+                    
+                    <div class="address-section">
+                        <div class="value" id="heavy-vehicle-address1">393 RAGLAN ST</div>
+                        <div class="value" id="heavy-vehicle-address2">SALE VIC 3850</div>
+                    </div>
+                    
+                    <div class="bottom-fields">
+                        <div class="field-row">
+                            <div class="field">
+                                <span class="label">LICENCE EXPIRY</span>
+                                <span class="value" id="heavy-vehicle-expiry">21-11-2019</span>
+                            </div>
+                            <div class="field">
+                                <span class="label">LICENCE TYPE</span>
+                                <span class="value" id="heavy-vehicle-license-type">CAR HR</span>
+                            </div>
+                        </div>
+                        
+                        <div class="field-row">
+                            <div class="field">
+                                <span class="label">DATE OF BIRTH</span>
+                                <span class="value" id="heavy-vehicle-birth-date">02-06-1983</span>
+                            </div>
+                            <div class="field">
+                                <span class="label">CONDITIONS</span>
+                                <span class="value" id="heavy-vehicle-conditions">NONE</span>
+                            </div>
+                        </div>
+                        
+                        <div class="field-row">
+                            <div class="field signature-field">
+                                <span class="value signature-text" id="heavy-vehicle-signature">Jayne C Amiet</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-section">
+                    <div class="license-number">
+                        <span class="label">LICENCE NUMBER</span>
+                        <span class="value" id="heavy-vehicle-license-no">059120569</span>
+                    </div>
+                    
+                    <div class="photo-section">
+                        <img id="heavy-vehicle-photo" src="" alt="License Holder Photo">
+                        <div class="photo-overlay" id="heavy-vehicle-photo-overlay">02061983</div>
+                    </div>
+                    
+                    <div class="vic-roads">
+                        <span>VIC roads</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="watermark">
+                <span>VicRoads</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

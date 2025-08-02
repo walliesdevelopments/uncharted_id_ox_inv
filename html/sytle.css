@@ -1,0 +1,570 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: transparent;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh;
+    padding-right: 50px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#license-container, #proof-age-container, #firearms-container, #heavy-vehicle-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-right: 50px;
+    pointer-events: none;
+}
+
+#license-container .license-card,
+#proof-age-container .license-card,
+#firearms-container .license-card,
+#heavy-vehicle-container .license-card {
+    pointer-events: all;
+}
+
+/* Driver License Styles */
+.driver-license {
+    width: 400px;
+    height: 250px;
+    background: linear-gradient(135deg, #a8d5a8 0%, #7fb87f 100%);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 3px solid #5a7c5a;
+}
+
+.driver-license::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.1) 2px,
+            rgba(255, 255, 255, 0.1) 4px
+        );
+    pointer-events: none;
+}
+
+.license-header {
+    background: linear-gradient(135deg, #1e4a72 0%, #2d5aa0 100%);
+    padding: 8px 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.license-header h1 {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.license-header h2 {
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin: 2px 0 0 0;
+}
+
+.license-body {
+    display: flex;
+    padding: 12px;
+    height: calc(100% - 60px);
+    position: relative;
+    z-index: 2;
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-section {
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.field {
+    margin-bottom: 4px;
+}
+
+.label {
+    font-size: 8px;
+    font-weight: bold;
+    color: #2d5aa0;
+    display: block;
+    text-transform: uppercase;
+}
+
+.value {
+    font-size: 11px;
+    font-weight: bold;
+    color: #000;
+    display: block;
+    margin-top: 1px;
+}
+
+.address-section {
+    margin: 8px 0;
+}
+
+.address-section .value {
+    font-size: 10px;
+    line-height: 1.2;
+    margin-bottom: 2px;
+}
+
+.bottom-fields {
+    margin-top: auto;
+}
+
+.field-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.field-row .field {
+    width: 48%;
+}
+
+.license-number {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.license-number .label {
+    font-size: 7px;
+}
+
+.license-number .value {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+}
+
+.photo-section {
+    position: relative;
+    width: 80px;
+    height: 100px;
+    background: #fff;
+    border: 2px solid #ccc;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.photo-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 8px;
+    padding: 2px;
+    text-align: center;
+}
+
+.vic-roads {
+    background: white;
+    border: 1px solid #000;
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #2d5aa0;
+    border-radius: 3px;
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    font-size: 48px;
+    color: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.signature-field {
+    width: 100% !important;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    margin-top: 5px;
+}
+
+.signature-text {
+    font-style: italic !important;
+    font-family: 'Brush Script MT', 'Lucida Handwriting', 'Segoe Script', cursive !important;
+    font-size: 10px !important;
+    color: #1e4a72 !important;
+    font-weight: normal !important;
+    text-decoration: none !important;
+    letter-spacing: 1px !important;
+    transform: rotate(-2deg) !important;
+    display: inline-block !important;
+    margin-top: 3px !important;
+}
+
+/* Proof of Age Card Styles */
+.proof-age-card {
+    width: 400px;
+    height: 250px;
+    background: linear-gradient(135deg, #e8f5e8 0%, #a8d5a8 50%, #7fb87f 100%);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 2px solid #2d5aa0;
+}
+
+.proof-age-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            30deg,
+            transparent,
+            transparent 3px,
+            rgba(255, 255, 255, 0.15) 3px,
+            rgba(255, 255, 255, 0.15) 6px
+        ),
+        repeating-linear-gradient(
+            -30deg,
+            transparent,
+            transparent 3px,
+            rgba(255, 255, 255, 0.1) 3px,
+            rgba(255, 255, 255, 0.1) 6px
+        );
+    pointer-events: none;
+}
+
+.proof-age-header {
+    background: linear-gradient(135deg, #1e4a72 0%, #2d5aa0 100%);
+    padding: 8px 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.proof-age-header h1 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.proof-age-header h2 {
+    font-size: 10px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin: 2px 0 0 0;
+}
+
+.proof-age-body {
+    display: flex;
+    padding: 12px;
+    height: calc(100% - 50px);
+    position: relative;
+    z-index: 2;
+}
+
+.proof-age-body .left-section {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.proof-age-body .right-section {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.name-field {
+    margin-bottom: 10px;
+}
+
+.large-text {
+    font-size: 16px !important;
+    font-weight: bold;
+    color: #000;
+}
+
+.card-number {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.card-number .value {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+}
+
+.field-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.field-group .field {
+    flex: 1;
+    min-width: 80px;
+}
+
+.victoria-logo {
+    margin-top: auto;
+}
+
+.triangle {
+    background: #000;
+    color: white;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    margin-bottom: 5px;
+}
+
+.state-gov {
+    font-size: 8px;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Firearms License Styles */
+.firearms-license {
+    width: 400px;
+    height: 250px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 2px solid #8B4513;
+}
+
+.firearms-header {
+    background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+    padding: 8px 0;
+    text-align: center;
+    color: #000;
+    position: relative;
+    z-index: 2;
+}
+
+.firearms-header h1 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.firearms-header h2 {
+    font-size: 10px;
+    font-weight: normal;
+    margin: 2px 0 0 0;
+}
+
+.firearms-body {
+    display: flex;
+    padding: 12px;
+    height: calc(100% - 50px);
+    position: relative;
+    z-index: 2;
+}
+
+.firearms-body .left-section {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.firearms-body .right-section {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conditions-field, .reasons-field {
+    margin-bottom: 8px;
+}
+
+.signature-section {
+    margin: 15px 0;
+}
+
+.signature-box {
+    border: 1px solid #000;
+    padding: 5px;
+    height: 30px;
+    background: white;
+}
+
+.signature {
+    font-style: italic;
+    font-size: 12px;
+    color: #000;
+}
+
+.bottom-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.expires-section, .license-number-section {
+    flex: 1;
+}
+
+.large-number {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+
+.firearms-body .photo-section {
+    width: 100px;
+    height: 120px;
+    background: #fff;
+    border: 2px solid #000;
+    margin-top: 10px;
+}
+
+/* Animation for showing/hiding */
+.license-card {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Heavy Vehicle License Styles */
+.heavy-vehicle-license {
+    width: 400px;
+    height: 250px;
+    background: linear-gradient(135deg, #98e098 0%, #68c968 50%, #4CAF50 100%);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 3px solid #2E7D32;
+}
+
+.heavy-vehicle-license::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+        radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+        linear-gradient(45deg, transparent 49%, rgba(255, 255, 255, 0.05) 50%, transparent 51%);
+    background-size: 40px 40px, 40px 40px, 20px 20px;
+    pointer-events: none;
+}
+
+.heavy-vehicle-header {
+    background: linear-gradient(135deg, #D32F2F 0%, #C62828 100%);
+    padding: 8px 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.heavy-vehicle-header h1 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.heavy-vehicle-header h2 {
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin: 2px 0 0 0;
+}
+
+.heavy-vehicle-body {
+    display: flex;
+    padding: 12px;
+    height: calc(100% - 60px);
+    position: relative;
+    z-index: 2;
+}
+
+.heavy-vehicle-body .left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.heavy-vehicle-body .right-section {
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.name-text {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    color: #000 !important;
+    margin-bottom: 10px !important;
+}
