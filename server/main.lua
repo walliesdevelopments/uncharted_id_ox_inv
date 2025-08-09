@@ -1,72 +1,55 @@
+-- Keep qb-core for player data if you're still using QBCore elsewhere
 local QBCore = exports['qb-core']:GetCoreObject()
+local ox = exports.ox_inventory
 
--- Register the vic_driver_license as a useable item
-QBCore.Functions.CreateUseableItem("vic_driver_license", function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if not Player then return end
-    
-    TriggerClientEvent('uncharted_id:client:useDriverLicense', source)
+-- ox_inventory usable items
+ox:RegisterUsableItem('vic_driver_license', function(source, item)
+    -- item.metadata is available if you store anything on the item
+    TriggerClientEvent('uncharted_id:client:useDriverLicense', source, item and item.metadata or nil)
 end)
 
--- Register the vic_motorbike_license as a useable item
-QBCore.Functions.CreateUseableItem("vic_motorbike_license", function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if not Player then return end
-    
-    TriggerClientEvent('uncharted_id:client:useMotorbikeLicense', source)
+ox:RegisterUsableItem('vic_motorbike_license', function(source, item)
+    TriggerClientEvent('uncharted_id:client:useMotorbikeLicense', source, item and item.metadata or nil)
 end)
 
--- Register the vic_weaponlicense as a useable item
-QBCore.Functions.CreateUseableItem("vic_weaponlicense", function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if not Player then return end
-    
-    TriggerClientEvent('uncharted_id:client:useFirearmsLicense', source)
+ox:RegisterUsableItem('vic_weaponlicense', function(source, item)
+    TriggerClientEvent('uncharted_id:client:useFirearmsLicense', source, item and item.metadata or nil)
 end)
 
--- Register the vic_id_card as a useable item
-QBCore.Functions.CreateUseableItem("vic_id_card", function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if not Player then return end
-    
-    TriggerClientEvent('uncharted_id:client:useIdCard', source)
+ox:RegisterUsableItem('vic_id_card', function(source, item)
+    TriggerClientEvent('uncharted_id:client:useIdCard', source, item and item.metadata or nil)
 end)
 
--- Register the vic_truck_license as a useable item
-QBCore.Functions.CreateUseableItem("vic_truck_license", function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if not Player then return end
-    
-    TriggerClientEvent('uncharted_id:client:useTruckLicense', source)
+ox:RegisterUsableItem('vic_truck_license', function(source, item)
+    TriggerClientEvent('uncharted_id:client:useTruckLicense', source, item and item.metadata or nil)
 end)
 
+-- unchanged: showing licenses to players nearby
 RegisterServerEvent('license:server:showLicense', function(coords, data)
     local src = source
-    local players = QBCore.Functions.GetPlayers()
+    local players = QBCore.Functions.GetPlayers() -- fine to keep if you’re still on QBCore core
     local playerName = GetPlayerName(src)
-    
-    print(string.format("[License] %s is showing %s license at coords: %s", playerName, data.type, coords))
-    
+
+    print(('[License] %s is showing %s license at coords: %s'):format(playerName, data.type, coords))
+
     local playersInRange = 0
-    
+
     for _, playerId in pairs(players) do
-        if playerId ~= src then -- Don't send to the person showing the license
+        if playerId ~= src then
             local targetPed = GetPlayerPed(playerId)
             if targetPed and targetPed ~= 0 then
                 local targetCoords = GetEntityCoords(targetPed)
                 local distance = #(vector3(targetCoords.x, targetCoords.y, targetCoords.z) - vector3(coords.x, coords.y, coords.z))
-                
-                if distance < 10.0 then -- Increased range from 5.0 to 10.0 for better visibility
+
+                if distance < 10.0 then
                     TriggerClientEvent('license:client:displayLicense', playerId, playerName, data.type)
-                    playersInRange = playersInRange + 1
-                    print(string.format("[License] Showing license to %s (distance: %.2f)", GetPlayerName(playerId), distance))
+                    playersInRange += 1
+                    print(('[License] Showing license to %s (distance: %.2f)'):format(GetPlayerName(playerId), distance))
                 end
             end
         end
     end
-    
-    -- Also show to the person displaying the license
+
     TriggerClientEvent('license:client:displayLicense', src, playerName, data.type)
-    
-    print(string.format("[License] License shown to %d nearby players", playersInRange))
+    print(('[License] License shown to %d nearby players'):format(playersInRange))
 end)
