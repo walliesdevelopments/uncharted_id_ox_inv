@@ -23,7 +23,7 @@ A comprehensive FiveM script for QBCore that provides realistic license and ID c
 ## Installation
 
 1. Place the `uncharted_id` folder in your `reacource` directory
-2. Get Bugshotbase
+2. Get Mugshotbase
 3. Add `ensure uncharted_id` to your `server.cfg`
 4. Add the license items to your QBCore shared items:
 
@@ -222,3 +222,4 @@ This script is provided as-is for FiveM roleplay servers. Modify and distribute 
 - Animation integration
 - Photo support via MugShotBase64
 - Address system integration
+
